@@ -1,0 +1,377 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f7fa;
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+h1, h2, h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.subject-selector {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.subject-btn {
+    padding: 8px 16px;
+    margin: 0 5px;
+    background-color: var(--light-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.subject-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-btn {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--dark-color);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.tab-btn:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Викторина стили */
+.quiz-settings {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+input[type="number"], select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.btn-start {
+    background-color: var(--success-color);
+}
+
+.btn-start:hover {
+    background-color: #27ae60;
+}
+
+/* Вопрос викторины */
+.quiz-container {
+    display: none;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.question {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.answers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.answer-btn {
+    padding: 15px;
+    background-color: var(--light-color);
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-align: left;
+    opacity: 1;
+}
+
+.answer-btn:hover {
+    background-color: #e0e0e0;
+    border-color: #bbb;
+}
+
+.answer-btn.correct {
+    background-color: var(--success-color);
+    color: white;
+    border-color: #27ae60;
+    transform: scale(1.02);
+}
+
+.answer-btn.incorrect {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: #c0392b;
+    transform: scale(1.02);
+}
+
+.progress {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+/* Результаты */
+.results-container {
+    display: none;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.results-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: var(--light-color);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--dark-color);
+}
+
+.answers-review {
+    margin-top: 30px;
+}
+
+.answer-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.answer-item.correct {
+    border-left: 5px solid var(--success-color);
+}
+
+.answer-item.incorrect {
+    border-left: 5px solid var(--accent-color);
+}
+
+.user-answer {
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.correct-answer {
+    font-weight: 600;
+    margin-top: 5px;
+    color: var(--success-color);
+}
+
+/* Таблица вопросов */
+.questions-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.questions-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.questions-table th, .questions-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.questions-table th {
+    background-color: var(--primary-color);
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+.questions-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.questions-table tr:hover {
+    background-color: #e9e9e9;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .subject-btn {
+        padding: 6px 12px;
+        margin: 0 3px 5px;
+        font-size: 0.9rem;
+    }
+    
+    .question {
+        font-size: 1.1rem;
+    }
+    
+    .answer-btn {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+    
+    .stat-card {
+        padding: 10px;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .quiz-settings, .quiz-container, .results-container {
+        padding: 20px;
+    }
+    
+    .tab-btn {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+}
